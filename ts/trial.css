@@ -1,0 +1,22 @@
+.card {
+  margin-top: 1rem;
+  min-height: 0rem;
+  background-color: midnightblue;
+  color: whitesmoke;
+  border-radius: 10px;
+  padding: 1rem;
+
+  > * {
+    margin-bottom: 1rem;
+  }
+}
+
+.weather__app {
+  margin: 5rem auto;
+  width: 90%;
+  text-align: center;
+}
+
+.error {
+  font-size: 1.2rem;
+}
