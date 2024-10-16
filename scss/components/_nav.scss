@@ -1,0 +1,120 @@
+.logo {
+  width: 7rem;
+  & img {
+    border-radius: 100vw;
+  }
+}
+
+nav {
+  //across devices
+  min-height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem 5cqi;
+  box-shadow: 0px 4px 4px rgba(0 0 0 / 0.2);
+  background-image: linear-gradient(
+    45deg,
+    var(--accent-clr) 20%,
+    var(--alt-primary-clr) 20%
+  );
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 3;
+
+  //for mobile & tablets
+  @media (width < 992px) {
+    [data-type="cta__btn"] {
+      display: none;
+    }
+
+    .nav__links {
+      position: fixed;
+      top: 5.4rem;
+      left: 0;
+      width: 100%;
+      min-height: 20vh;
+      padding: var(--padding);
+      text-align: center;
+      backdrop-filter: blur(25px);
+      box-shadow: 0px 4px 4px rgba(0 0 0 / 0.2);
+      transition: scale var(--fast);
+      scale: 0 0;
+      transform-origin: top;
+      > * {
+        margin-bottom: var(--gap);
+      }
+
+      &-link a {
+        font-size: var(--h2-font-size);
+        text-shadow: 0px 0px 6px black;
+      }
+    }
+
+    .hamburger {
+      --width: 60px;
+      width: var(var(--width));
+      display: grid;
+      place-content: center;
+      background-color: transparent;
+
+      &.active {
+        .bar__one {
+          rotate: 45deg;
+          translate: 0 13px;
+        }
+
+        .bar__two {
+          opacity: 0;
+        }
+
+        .bar__three {
+          rotate: -45deg;
+          translate: 0 -5px;
+        }
+
+        + .nav__links {
+          scale: 1 1;
+        }
+      }
+    }
+
+    .bar {
+      background-color: var(--accent-clr);
+      width: calc(var(--width) / 2);
+      height: 3px;
+      display: block;
+      margin: 3px auto;
+      transition: var(--fast);
+    }
+  }
+
+  @media (width > 992px) {
+    //for large devices
+    .hamburger {
+      display: none;
+    }
+
+    .nav__links {
+      display: flex;
+      gap: var(--extra-gap);
+      justify-content: center;
+
+      [aria-current="page"] {
+        --scale: 1;
+      }
+
+      &-link > a {
+        position: relative;
+        text-transform: uppercase;
+      }
+    }
+
+    [data-type="cta__btn"] {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+  }
+}
